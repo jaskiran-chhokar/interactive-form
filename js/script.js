@@ -46,7 +46,7 @@ const tShirtInfo = () => {
         for(let i = 0; i < colorOptions.length; i++) {
 
             let colorOption = colorOptions[i];
-
+            
             colorOption.hidden = 'true'; 
 
             if(design.value === 'js puns') {
