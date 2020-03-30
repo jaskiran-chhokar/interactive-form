@@ -41,22 +41,7 @@ const setDefaultColor = () => {
     color.prepend(defaultColorOption); 
 }
 
-selectTheme();
-setDefaultColor();
-
-design.addEventListener('change', e => {
-    
-    defaultColorOption.remove();
-
-    for(let i = 0; i < colorOptions.length; i++) {
-        let colorOption = colorOptions[i];
-        colorOption.hidden = 'true'; 
-        switchTheme('js puns','(JS Puns shirt only)',colorOption,0); 
-        switchTheme('heart js','(I ♥ JS shirt only)',colorOption,3); 
-    }
-});
-
-//Switch Color Option Based on Theme 
+//Set Condition to Switch Color Option Based on Theme
 const switchTheme = (designValue, designContent, colorOption, index) => {
     if(design.value === designValue) {
         if(colorOption.textContent.includes(designContent)) {
@@ -68,6 +53,24 @@ const switchTheme = (designValue, designContent, colorOption, index) => {
         }
     }
 }
+
+selectTheme();
+setDefaultColor();
+
+//Switch Color Option Based on Theme
+design.addEventListener('change', e => {
+
+    defaultColorOption.remove();
+
+    for(let i = 0; i < colorOptions.length; i++) {
+        let colorOption = colorOptions[i];
+        colorOption.hidden = 'true'; 
+        switchTheme('js puns','(JS Puns shirt only)',colorOption,0); 
+        switchTheme('heart js','(I ♥ JS shirt only)',colorOption,3); 
+    }
+});
+
+
 
 
 
