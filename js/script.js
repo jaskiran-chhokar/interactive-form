@@ -34,35 +34,31 @@ const selectTheme = () => {
     selectOption.hidden = 'true';
 }
 
-selectTheme();
+//Set Color Option Which Appears by Default
+const setDefaultColor = () => {
+    defaultColorOption.textContent = 'Please select a T-shirt theme'; 
+    defaultColorOption.setAttribute('selected', 'selected');
+    color.prepend(defaultColorOption); 
+}
 
-//Create New Color Option Which Appears by Default
-defaultColorOption.textContent = 'Please select a T-shirt theme'; 
-defaultColorOption.setAttribute('selected', 'selected');
-color.prepend(defaultColorOption); 
+selectTheme();
+setDefaultColor();
 
 design.addEventListener('change', e => {
-
+    
     defaultColorOption.remove();
 
     for(let i = 0; i < colorOptions.length; i++) {
-
         let colorOption = colorOptions[i];
         colorOption.hidden = 'true'; 
-
         switchTheme('js puns','(JS Puns shirt only)',colorOption,0); 
-
         switchTheme('heart js','(I ♥ JS shirt only)',colorOption,3); 
-
     }
-
 });
 
 //Switch Color Option Based on Theme 
 const switchTheme = (designValue, designContent, colorOption, index) => {
-
     if(design.value === designValue) {
-
         if(colorOption.textContent.includes(designContent)) {
             colorOption.removeAttribute('hidden');
             colorOptions[index].setAttribute('selected', 'selected');
@@ -70,9 +66,7 @@ const switchTheme = (designValue, designContent, colorOption, index) => {
             colorOption.hidden = 'true'; 
             colorOptions[index].removeAttribute('selected');
         }
-
     }
-
 }
 
 
