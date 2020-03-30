@@ -71,6 +71,20 @@ design.addEventListener('change', e => {
 });
 
 
+//Register for Activities 
+const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
+
+
+for(let i = 0; i < checkboxInputs.length; i++) {
+    let checkboxInput = checkboxInputs[i];
+
+    if(checkboxInput.checked === 'true') {
+        console.log(checkboxInput);
+    }
+
+}
+
+
 
 
 
