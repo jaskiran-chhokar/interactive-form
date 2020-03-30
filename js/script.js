@@ -24,58 +24,58 @@ const otherJobRole = () => {
 otherJobRole();
 
 //T-shirt info section
-const tShirtInfo = () => { 
+const design = document.querySelector('#design');
+const colorOptions = document.querySelectorAll('#color > option');
+const defaultColorOption = document.createElement('option');   
 
-    const design = document.querySelector('#design'); 
-    const color = document.querySelector('#color');
-    const colorOptions = document.querySelectorAll('#color > option');
-
+//Set Select Theme to Not be Clickable 
+const selectTheme = () => {
     const selectOption = document.querySelector('.select-theme'); 
     selectOption.hidden = 'true';
-    
-    //Create New Color Option Which Appears by Default
-    const defaultColorOption = document.createElement('option'); 
-    defaultColorOption.textContent = 'Please select a T-shirt theme'; 
-    color.prepend(defaultColorOption);
-    defaultColorOption.setAttribute('selected', 'selected'); 
-
-    design.addEventListener('change', e => {
-
-        defaultColorOption.remove();
-
-        for(let i = 0; i < colorOptions.length; i++) {
-
-            let colorOption = colorOptions[i];
-            
-            colorOption.hidden = 'true'; 
-
-            if(design.value === 'js puns') {
-
-                if(colorOption.textContent.includes('(JS Puns shirt only)')) {
-                    colorOption.removeAttribute('hidden'); 
-                    colorOptions[0].setAttribute('selected', 'selected');
-
-                } else {
-                    colorOption.hidden = 'true'; 
-                    colorOptions[0].removeAttribute('selected');
-                }
-
-            } 
-        
-            if(design.value === 'heart js') {
-
-                if(colorOption.textContent.includes('(I ♥ JS shirt only)')) {
-                    colorOption.removeAttribute('hidden');
-                    colorOptions[3].setAttribute('selected', 'selected');
-                } else {
-                    colorOption.hidden = 'true'; 
-                    colorOptions[3].removeAttribute('selected');
-                }
-
-            }
-        }
-
-    });
 }
 
-tShirtInfo();
+selectTheme();
+
+//Create New Color Option Which Appears by Default
+defaultColorOption.textContent = 'Please select a T-shirt theme'; 
+defaultColorOption.setAttribute('selected', 'selected');
+color.prepend(defaultColorOption); 
+
+design.addEventListener('change', e => {
+
+    defaultColorOption.remove();
+
+    for(let i = 0; i < colorOptions.length; i++) {
+
+        let colorOption = colorOptions[i];
+        colorOption.hidden = 'true'; 
+
+        switchTheme('js puns','(JS Puns shirt only)',colorOption,0); 
+
+        switchTheme('heart js','(I ♥ JS shirt only)',colorOption,3); 
+
+    }
+
+});
+
+//Switch Color Option Based on Theme 
+const switchTheme = (designValue, designContent, colorOption, index) => {
+
+    if(design.value === designValue) {
+
+        if(colorOption.textContent.includes(designContent)) {
+            colorOption.removeAttribute('hidden');
+            colorOptions[index].setAttribute('selected', 'selected');
+        } else {
+            colorOption.hidden = 'true'; 
+            colorOptions[index].removeAttribute('selected');
+        }
+
+    }
+
+}
+
+
+
+
+
