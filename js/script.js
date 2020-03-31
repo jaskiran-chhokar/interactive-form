@@ -83,7 +83,7 @@ const calculateTotalCost = clicked => {
     clicked.checked ? total.push(clickedCost) : total.splice(total.indexOf(clickedCost),1);
     totalCost = eval(total.join('+'));
     if(totalCost === undefined) { totalCost = 0; }
-    h3.textContent = `Total Cost: ${totalCost}`;
+    h3.textContent = `Total Cost: $${totalCost}`;
 }
 
 //Register for Activities - Set Restrictions Based on Date and Time Attributes
