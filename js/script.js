@@ -71,33 +71,18 @@ design.addEventListener('change', e => {
 });
 
 
-//Register for Activities 
+//Register for Activities - Set Restrictions Based on Date and Time Attributes
 document.querySelector('.activities').addEventListener('change', e => {
-
     const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
 
     for(let i = 0; i < checkboxInputs.length; i++) {
-
         const checkboxInput = checkboxInputs[i];
         const clicked = e.target; 
         const checkDayAndTime = checkboxInput.getAttribute('data-day-and-time'); 
         const clickedDayAndTime = clicked.getAttribute('data-day-and-time');
     
         if(clickedDayAndTime === checkDayAndTime && clicked != checkboxInput) {
-
             clicked.checked ? checkboxInput.disabled = 'true' : checkboxInput.removeAttribute('disabled');
-
         } 
-
     }
-
 });
-
-
-
-
-
-
-
-
-
