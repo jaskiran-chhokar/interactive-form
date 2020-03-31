@@ -71,21 +71,23 @@ design.addEventListener('change', e => {
 });
 
 //Register for Activities - Calculate Total Cost 
+const activities = document.querySelector('.activities');
+let h3 = document.createElement('h3'); 
+activities.appendChild(h3);
+
 const total = [];
 let totalCost = 0; 
 
 const calculateTotalCost = clicked => {
     let clickedCost = parseInt(clicked.getAttribute('data-cost'));
-
     clicked.checked ? total.push(clickedCost) : total.splice(total.indexOf(clickedCost),1);
     totalCost = eval(total.join('+'));
     if(totalCost === undefined) { totalCost = 0; }
-    
-    console.log('Total Cost: ' + totalCost);
+    h3.textContent = `Total Cost: ${totalCost}`;
 }
 
 //Register for Activities - Set Restrictions Based on Date and Time Attributes
-document.querySelector('.activities').addEventListener('change', e => {
+activities.addEventListener('change', e => {
     const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
     const clicked = e.target; 
 
