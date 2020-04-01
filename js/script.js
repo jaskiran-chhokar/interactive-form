@@ -103,3 +103,36 @@ activities.addEventListener('change', e => {
     calculateTotalCost(clicked);
 });
 
+//Payment Section
+const creditCard = document.querySelector('#credit-card'); 
+const paypal = document.querySelector('#paypal');
+const bitcoin = document.querySelector('#bitcoin');
+
+creditCard.style.display = 'none';
+paypal.style.display = 'none';
+bitcoin.style.display = 'none';
+
+document.querySelector('#payment').addEventListener('change', e => {
+
+    let paymentOption = e.target; 
+
+    if(paymentOption.value === 'credit card') {
+
+        creditCard.style.display = 'block';
+        paypal.style.display = 'none';
+        bitcoin.style.display = 'none'; 
+
+    } else if(paymentOption.value === 'paypal') {
+
+        paypal.style.display = 'block';
+        creditCard.style.display = 'none';
+        bitcoin.style.display = 'none';
+               
+    } else if(paymentOption.value === 'bitcoin') {
+
+        bitcoin.style.display = 'block';
+        creditCard.style.display = 'none';
+        paypal.style.display = 'none';
+
+    } 
+});
