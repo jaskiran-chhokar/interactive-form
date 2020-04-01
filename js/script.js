@@ -110,7 +110,11 @@ const paypal = document.querySelector('#paypal');
 const bitcoin = document.querySelector('#bitcoin');
 const selectPayment = document.querySelector('#payment option:nth-child(1)');
 
-creditCard.style.display = 'none';
+//Set Credit Card option to be Selected by Default
+const paymentOptionCredit = document.querySelector('#payment option:nth-child(2)');
+paymentOptionCredit.setAttribute('selected','selected');
+
+//Set Other Payment Options to Display none by Default
 paypal.style.display = 'none';
 bitcoin.style.display = 'none';
 
