@@ -28,10 +28,11 @@ const design = document.querySelector('#design');
 const colorOptions = document.querySelectorAll('#color > option');
 const defaultColorOption = document.createElement('option');   
 
-//Set Select Theme to Not be Clickable 
-const selectTheme = () => {
-    const selectOption = document.querySelector('.select-theme'); 
-    selectOption.hidden = 'true';
+//Set Option to be Hidden
+const selectOption = document.querySelector('.select-theme'); 
+
+const notClickable = option => {
+    option.hidden = 'true';
 }
 
 //Set Color Option Which Appears by Default
@@ -54,7 +55,7 @@ const switchTheme = (designValue, designContent, colorOption, index) => {
     }
 }
 
-selectTheme();
+notClickable(selectOption);
 setDefaultColor();
 
 //Switch Color Option Based on Theme
@@ -107,10 +108,13 @@ activities.addEventListener('change', e => {
 const creditCard = document.querySelector('#credit-card'); 
 const paypal = document.querySelector('#paypal');
 const bitcoin = document.querySelector('#bitcoin');
+const selectPayment = document.querySelector('#payment option:nth-child(1)');
 
 creditCard.style.display = 'none';
 paypal.style.display = 'none';
 bitcoin.style.display = 'none';
+
+notClickable(selectPayment);
 
 document.querySelector('#payment').addEventListener('change', e => {
 
