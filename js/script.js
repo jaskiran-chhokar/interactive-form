@@ -73,6 +73,7 @@ design.addEventListener('change', e => {
 
 //Register for Activities - Calculate Total Cost 
 const activities = document.querySelector('.activities');
+const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
 let h3 = document.createElement('h3'); 
 activities.appendChild(h3);
 
@@ -89,7 +90,6 @@ const calculateTotalCost = clicked => {
 
 //Register for Activities - Set Restrictions Based on Date and Time Attributes
 activities.addEventListener('change', e => {
-    const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
     const clicked = e.target; 
 
     for(let i = 0; i < checkboxInputs.length; i++) {
@@ -201,10 +201,27 @@ email.addEventListener('keydown', e => {
     emailValidation();
 });
 
+// Checkbox Validation 
+const checkboxValidation = () => {
+
+    let activitiesLegend = document.querySelector('.activities legend');
+
+    for(let i = 0; i < checkboxInputs.length; i++) {
+
+        if(checkboxInputs[i].checked) {
+            activitiesLegend.textContent = 'Register for Activities';
+        } else {
+            activitiesLegend.textContent = 'Register for Activities - Check at least one option!';
+            activitiesLegend.style.color = 'firebrick';
+        }
+    }
+}
+
 form.addEventListener('submit', e => {
 
     nameValidation();
     emailValidation();
+    checkboxValidation();
 
     e.preventDefault();
 
