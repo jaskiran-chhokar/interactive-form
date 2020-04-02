@@ -217,11 +217,25 @@ const checkboxValidation = () => {
     }
 }
 
+//Credit Card Validation
+const cardNumber = () => {
+    let regex = /^[0-9]{13,16}$/;
+    let creditCard = document.querySelector('#cc-num');
+    if(regex.test(creditCard.value)) {
+        creditCard.style.borderColor = 'rgb(111, 157, 220)'; 
+    } else {
+        creditCard.style.borderColor = 'firebrick'; 
+    }
+}
+
+
 form.addEventListener('submit', e => {
 
     nameValidation();
     emailValidation();
     checkboxValidation();
+
+    cardNumber();
 
     e.preventDefault();
 
