@@ -217,14 +217,36 @@ const checkboxValidation = () => {
     }
 }
 
-//Credit Card Validation
-const cardNumber = () => {
+//Credit Card Number Validation
+const creditValidation = () => {
     let regex = /^[0-9]{13,16}$/;
     let creditCard = document.querySelector('#cc-num');
     if(regex.test(creditCard.value)) {
         creditCard.style.borderColor = 'rgb(111, 157, 220)'; 
     } else {
         creditCard.style.borderColor = 'firebrick'; 
+    }
+}
+
+//Zip Code Validation 
+const zipCodeValidation = () => {
+    let regex = /^[0-9]{5}$/; 
+    let zipCode = document.querySelector('#zip');
+    if(regex.test(zipCode.value)) {
+        zipCode.style.borderColor = 'rgb(111, 157, 220)';
+    } else {
+        zipCode.style.borderColor = 'firebrick'; 
+    }
+}
+
+//CVV Validation 
+const cvvValidation = () => {
+    let regex = /^[0-9]{3}$/;
+    let cvv = document.querySelector('#cvv');
+    if(regex.test(cvv.value)) {
+        cvv.style.borderColor = 'rgb(111, 157, 220)';
+    } else {
+        cvv.style.borderColor = 'firebrick';
     }
 }
 
@@ -235,7 +257,9 @@ form.addEventListener('submit', e => {
     emailValidation();
     checkboxValidation();
 
-    cardNumber();
+    creditValidation();
+    zipCodeValidation();
+    cvvValidation();
 
     e.preventDefault();
 
