@@ -148,15 +148,18 @@ document.querySelector('#payment').addEventListener('change', e => {
 // Form Validation 
 const form = document.querySelector('form'); 
 const name = document.querySelector('#name'); 
-let errorText = document.createElement('p');
+const email = document.querySelector('#mail');
 
-const errorMessage = inputType => {
+let errorTextName = document.createElement('p');
+let errorTextEmail = document.createElement('p');
+
+const errorMessage = (inputType, errorText) => {
     let parentNode = inputType.parentNode;
     parentNode.insertBefore(errorText,inputType);
 }
 
 // Name Validation
-errorMessage(name);
+errorMessage(name, errorTextName);
 
 const nameValidation = () => {
 
@@ -164,10 +167,10 @@ const nameValidation = () => {
 
     if(nameValue.length > 0) {
         name.style.borderColor = 'rgb(111, 157, 220)'; 
-        errorText.textContent = '';
+        errorTextName.textContent = '';
     } else {
         name.style.borderColor = 'firebrick';
-        errorText.textContent = 'Please enter a name.';
+        errorTextName.textContent = 'Please enter a name.';
     }
 }
 
@@ -175,9 +178,33 @@ name.addEventListener('keydown', e => {
     nameValidation();
 });
 
+// Email Validation 
+errorMessage(email,errorTextEmail); 
+
+const emailValidation = () => {
+    
+    let emailValue = email.value; 
+    let emailSymbol = emailValue.indexOf('@'); 
+    let emailDot = emailValue.lastIndexOf('.'); 
+
+    if(emailSymbol > 1 && emailDot > emailSymbol + 1) {
+        email.style.borderColor = 'rgb(111, 157, 220)'; 
+        errorTextEmail.textContent = '';
+    } else {
+        email.style.borderColor = 'firebrick';
+        errorTextEmail.textContent = 'Please enter a valid email address.';
+    }
+
+}
+
+email.addEventListener('keydown', e => {
+    emailValidation();
+});
+
 form.addEventListener('submit', e => {
 
     nameValidation();
+    emailValidation();
 
     e.preventDefault();
 
