@@ -223,17 +223,25 @@ let creditCardNumber = document.querySelector('#cc-num');
 
 const creditValidation = () => {
     let regex = /^[0-9]{13,16}$/;
+    let creditValue = creditCardNumber.value;
 
-    if(regex.test(creditCardNumber.value)) {
+    if(regex.test(creditValue)) {
         creditCardNumber.style.borderColor = 'rgb(111, 157, 220)'; 
-    } else {
+        errorTextCredit.textContent = ''; 
+    } else if(creditValue.length === 0) {
         creditCardNumber.style.borderColor = 'firebrick'; 
-    }
+        errorTextCredit.textContent = 'Please enter a credit card number';    
+    } else if(creditValue.length < 13 || creditValue.length > 16) {
+        creditCardNumber.style.borderColor = 'firebrick'; 
+        errorTextCredit.textContent = 'Please enter a number that is between 13 and 16 digits long';
+    } 
 }
 
 creditCardNumber.addEventListener('keyup', e => {
     creditValidation();
 });
+
+errorMessage(creditCard, errorTextCredit);
 
 //Zip Code Validation 
 let zipCode = document.querySelector('#zip');
