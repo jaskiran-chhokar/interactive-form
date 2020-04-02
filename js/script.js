@@ -152,6 +152,7 @@ const email = document.querySelector('#mail');
 
 let errorTextName = document.createElement('p');
 let errorTextEmail = document.createElement('p');
+let errorTextCredit = document.createElement('p');
 
 const errorMessage = (inputType, errorText) => {
     let parentNode = inputType.parentNode;
@@ -174,7 +175,7 @@ const nameValidation = () => {
     }
 }
 
-name.addEventListener('keydown', e => {
+name.addEventListener('keyup', e => {
     nameValidation();
 });
 
@@ -197,7 +198,7 @@ const emailValidation = () => {
 
 }
 
-email.addEventListener('keydown', e => {
+email.addEventListener('keyup', e => {
     emailValidation();
 });
 
@@ -218,20 +219,28 @@ const checkboxValidation = () => {
 }
 
 //Credit Card Number Validation
+let creditCardNumber = document.querySelector('#cc-num');
+
 const creditValidation = () => {
     let regex = /^[0-9]{13,16}$/;
-    let creditCard = document.querySelector('#cc-num');
-    if(regex.test(creditCard.value)) {
-        creditCard.style.borderColor = 'rgb(111, 157, 220)'; 
+
+    if(regex.test(creditCardNumber.value)) {
+        creditCardNumber.style.borderColor = 'rgb(111, 157, 220)'; 
     } else {
-        creditCard.style.borderColor = 'firebrick'; 
+        creditCardNumber.style.borderColor = 'firebrick'; 
     }
 }
 
+creditCardNumber.addEventListener('keyup', e => {
+    creditValidation();
+});
+
 //Zip Code Validation 
+let zipCode = document.querySelector('#zip');
+
 const zipCodeValidation = () => {
     let regex = /^[0-9]{5}$/; 
-    let zipCode = document.querySelector('#zip');
+
     if(regex.test(zipCode.value)) {
         zipCode.style.borderColor = 'rgb(111, 157, 220)';
     } else {
@@ -239,16 +248,26 @@ const zipCodeValidation = () => {
     }
 }
 
+zipCode.addEventListener('keyup', e => {
+    zipCodeValidation();
+});
+
 //CVV Validation 
+let cvv = document.querySelector('#cvv');
+
 const cvvValidation = () => {
     let regex = /^[0-9]{3}$/;
-    let cvv = document.querySelector('#cvv');
+
     if(regex.test(cvv.value)) {
         cvv.style.borderColor = 'rgb(111, 157, 220)';
     } else {
         cvv.style.borderColor = 'firebrick';
     }
 }
+
+cvv.addEventListener('keyup', e => {
+    cvvValidation();
+});
 
 // Event Listener for Submit Button
 form.addEventListener('submit', e => {
