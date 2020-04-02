@@ -144,3 +144,31 @@ document.querySelector('#payment').addEventListener('change', e => {
 
     } 
 });
+
+// Form Validation 
+const form = document.querySelector('form'); 
+const name = document.querySelector('#name'); 
+
+const nameValidation = () => {
+
+    let nameValue = name.value; 
+    let parentNode = name.parentNode;
+    let errorMessage = document.createElement('p');
+    errorMessage.textContent = 'Please enter a name.';
+
+    if(nameValue.length > 0) {
+        name.style.borderColor = 'rgb(111, 157, 220)'; 
+    } else {
+        name.style.borderColor = 'firebrick';
+        parentNode.insertBefore(errorMessage,name);
+    }
+}
+
+
+form.addEventListener('submit', e => {
+
+    nameValidation();
+
+    e.preventDefault();
+
+});
