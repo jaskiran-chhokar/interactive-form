@@ -148,22 +148,32 @@ document.querySelector('#payment').addEventListener('change', e => {
 // Form Validation 
 const form = document.querySelector('form'); 
 const name = document.querySelector('#name'); 
+let errorText = document.createElement('p');
+
+const errorMessage = inputType => {
+    let parentNode = inputType.parentNode;
+    parentNode.insertBefore(errorText,inputType);
+}
+
+// Name Validation
+errorMessage(name);
 
 const nameValidation = () => {
 
     let nameValue = name.value; 
-    let parentNode = name.parentNode;
-    let errorMessage = document.createElement('p');
-    errorMessage.textContent = 'Please enter a name.';
 
     if(nameValue.length > 0) {
         name.style.borderColor = 'rgb(111, 157, 220)'; 
+        errorText.textContent = '';
     } else {
         name.style.borderColor = 'firebrick';
-        parentNode.insertBefore(errorMessage,name);
+        errorText.textContent = 'Please enter a name.';
     }
 }
 
+name.addEventListener('keydown', e => {
+    nameValidation();
+});
 
 form.addEventListener('submit', e => {
 
