@@ -205,8 +205,9 @@ const checkboxValidation = () => {
 
     const activitiesLegend = document.querySelector('.activities legend');
 
-    for(let i = 0; i < checkboxInputs.length; i++) {
-        if(checkboxInputs[i].checked) {
+        let checked = document.querySelectorAll('input[type=checkbox]:checked').length;
+
+        if(checked > 0) {
             activitiesLegend.textContent = 'Register for Activities';
             activitiesLegend.style.color = 'rgba(6, 49, 68, 0.9)';
             return true;
@@ -215,7 +216,6 @@ const checkboxValidation = () => {
             activitiesLegend.style.color = 'firebrick';
             return false; 
         }
-    }
 }
 
 //Credit Card Number Validation
@@ -302,7 +302,9 @@ form.addEventListener('submit', e => {
     if(!cvvValidation()) {
         e.preventDefault();
     }
+
     if(nameValidation() && emailValidation() && checkboxValidation() && creditValidation() && zipCodeValidation() && cvvValidation()) {
-        window.location.reload();
+        setTimeout(function(){window.location.reload();},10);
     }
+
 });
