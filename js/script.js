@@ -1,23 +1,19 @@
-//Set focus on first text field
+//Set Focus on First Text Field
 document.addEventListener('DOMContentLoaded', () => {
     const firstInput = document.querySelector('#name'); 
     firstInput.focus();
 }); 
 
-//'Other' job role functionality
+//Other Job Role Functionality
 const otherJobRole = () => {
     const jobRole = document.querySelector('select[id=title]');
     const otherJob = document.querySelector('#other-title');
 
-    //Set input to display none, by default
+    //Set Other Job Input to Display None by Default
     otherJob.style.display = 'none';
 
     jobRole.addEventListener('change', e => {
-        if(e.target.value === 'other') {
-            otherJob.style.display = 'block';
-        } else {
-            otherJob.style.display = 'none';
-        }
+        e.target.value === 'other' ? otherJob.style.display = 'block' : otherJob.style.display = 'none';
     });
 }
 
@@ -79,14 +75,14 @@ design.addEventListener('change', e => {
 //Register for Activities - Calculate Total Cost 
 const activities = document.querySelector('.activities');
 const checkboxInputs = document.querySelectorAll('input[type=checkbox]'); 
-let h3 = document.createElement('h3'); 
+const h3 = document.createElement('h3'); 
 activities.appendChild(h3);
 
 const total = [];
 let totalCost = 0; 
 
 const calculateTotalCost = clicked => {
-    let clickedCost = parseInt(clicked.getAttribute('data-cost'));
+    const clickedCost = parseInt(clicked.getAttribute('data-cost'));
     clicked.checked ? total.push(clickedCost) : total.splice(total.indexOf(clickedCost),1);
     totalCost = eval(total.join('+'));
     if(totalCost === undefined) { totalCost = 0; }
@@ -130,23 +126,17 @@ document.querySelector('#payment').addEventListener('change', e => {
     let paymentOption = e.target; 
 
     if(paymentOption.value === 'credit card') {
-
         creditCard.style.display = 'block';
         paypal.style.display = 'none';
         bitcoin.style.display = 'none'; 
-
     } else if(paymentOption.value === 'paypal') {
-
         paypal.style.display = 'block';
         creditCard.style.display = 'none';
-        bitcoin.style.display = 'none';
-               
+        bitcoin.style.display = 'none';         
     } else if(paymentOption.value === 'bitcoin') {
-
         bitcoin.style.display = 'block';
         creditCard.style.display = 'none';
         paypal.style.display = 'none';
-
     } 
 });
 
@@ -155,21 +145,20 @@ const form = document.querySelector('form');
 const name = document.querySelector('#name'); 
 const email = document.querySelector('#mail');
 
-let errorTextName = document.createElement('p');
-let errorTextEmail = document.createElement('p');
-let errorTextCredit = document.createElement('p');
+//Declare Error Message Elements
+const errorTextName = document.createElement('p');
+const errorTextEmail = document.createElement('p');
+const errorTextCredit = document.createElement('p');
 
+//Generate Error Message
 const errorMessage = (inputType, errorText) => {
     let parentNode = inputType.parentNode;
     parentNode.insertBefore(errorText,inputType);
 }
 
-// Name Validation
-errorMessage(name, errorTextName);
-
+//Name Validation
 const nameValidation = () => {
-
-    let nameValue = name.value; 
+    const nameValue = name.value; 
 
     if(nameValue.length > 0) {
         name.style.borderColor = 'rgb(111, 157, 220)'; 
@@ -184,14 +173,13 @@ name.addEventListener('keyup', e => {
     nameValidation();
 });
 
-// Email Validation 
-errorMessage(email,errorTextEmail); 
+errorMessage(name, errorTextName);
 
+// Email Validation 
 const emailValidation = () => {
-    
-    let emailValue = email.value; 
-    let emailSymbol = emailValue.indexOf('@'); 
-    let emailDot = emailValue.lastIndexOf('.'); 
+    const emailValue = email.value; 
+    const emailSymbol = emailValue.indexOf('@'); 
+    const emailDot = emailValue.lastIndexOf('.'); 
 
     if(emailSymbol > 1 && emailDot > emailSymbol + 1) {
         email.style.borderColor = 'rgb(111, 157, 220)'; 
@@ -200,20 +188,20 @@ const emailValidation = () => {
         email.style.borderColor = 'firebrick';
         errorTextEmail.textContent = 'Please enter a valid email address.';
     }
-
 }
 
 email.addEventListener('keyup', e => {
     emailValidation();
 });
 
+errorMessage(email,errorTextEmail); 
+
 // Checkbox Validation 
 const checkboxValidation = () => {
 
-    let activitiesLegend = document.querySelector('.activities legend');
+    const activitiesLegend = document.querySelector('.activities legend');
 
     for(let i = 0; i < checkboxInputs.length; i++) {
-
         if(checkboxInputs[i].checked) {
             activitiesLegend.textContent = 'Register for Activities';
         } else {
@@ -224,11 +212,11 @@ const checkboxValidation = () => {
 }
 
 //Credit Card Number Validation
-let creditCardNumber = document.querySelector('#cc-num');
+const creditCardNumber = document.querySelector('#cc-num');
 
 const creditValidation = () => {
-    let regex = /^[0-9]{13,16}$/;
-    let creditValue = creditCardNumber.value;
+    const regex = /^[0-9]{13,16}$/;
+    const creditValue = creditCardNumber.value;
 
     if(regex.test(creditValue)) {
         creditCardNumber.style.borderColor = 'rgb(111, 157, 220)'; 
@@ -249,16 +237,11 @@ creditCardNumber.addEventListener('keyup', e => {
 errorMessage(creditCard, errorTextCredit);
 
 //Zip Code Validation 
-let zipCode = document.querySelector('#zip');
+const zipCode = document.querySelector('#zip');
 
 const zipCodeValidation = () => {
-    let regex = /^[0-9]{5}$/; 
-
-    if(regex.test(zipCode.value)) {
-        zipCode.style.borderColor = 'rgb(111, 157, 220)';
-    } else {
-        zipCode.style.borderColor = 'firebrick'; 
-    }
+    const regex = /^[0-9]{5}$/; 
+    regex.test(zipCode.value) ? zipCode.style.borderColor = 'rgb(111, 157, 220)' : zipCode.style.borderColor = 'firebrick';
 }
 
 zipCode.addEventListener('keyup', e => {
@@ -266,16 +249,11 @@ zipCode.addEventListener('keyup', e => {
 });
 
 //CVV Validation 
-let cvv = document.querySelector('#cvv');
+const cvv = document.querySelector('#cvv');
 
 const cvvValidation = () => {
-    let regex = /^[0-9]{3}$/;
-
-    if(regex.test(cvv.value)) {
-        cvv.style.borderColor = 'rgb(111, 157, 220)';
-    } else {
-        cvv.style.borderColor = 'firebrick';
-    }
+    const regex = /^[0-9]{3}$/;
+    regex.test(cvv.value) ? cvv.style.borderColor = 'rgb(111, 157, 220)' : cvv.style.borderColor = 'firebrick';
 }
 
 cvv.addEventListener('keyup', e => {
