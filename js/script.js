@@ -163,9 +163,11 @@ const nameValidation = () => {
     if(nameValue.length > 0) {
         name.style.borderColor = 'rgb(111, 157, 220)'; 
         errorTextName.textContent = '';
+        return true; 
     } else {
         name.style.borderColor = 'firebrick';
         errorTextName.textContent = 'Please enter a name.';
+        return false; 
     }
 }
 
@@ -184,9 +186,11 @@ const emailValidation = () => {
     if(emailSymbol > 1 && emailDot > emailSymbol + 1) {
         email.style.borderColor = 'rgb(111, 157, 220)'; 
         errorTextEmail.textContent = '';
+        return true; 
     } else {
         email.style.borderColor = 'firebrick';
         errorTextEmail.textContent = 'Please enter a valid email address.';
+        return false; 
     }
 }
 
@@ -204,9 +208,12 @@ const checkboxValidation = () => {
     for(let i = 0; i < checkboxInputs.length; i++) {
         if(checkboxInputs[i].checked) {
             activitiesLegend.textContent = 'Register for Activities';
+            activitiesLegend.style.color = 'rgba(6, 49, 68, 0.9)';
+            return true;
         } else {
             activitiesLegend.textContent = 'Register for Activities - Check at least one option!';
             activitiesLegend.style.color = 'firebrick';
+            return false; 
         }
     }
 }
@@ -221,12 +228,15 @@ const creditValidation = () => {
     if(regex.test(creditValue)) {
         creditCardNumber.style.borderColor = 'rgb(111, 157, 220)'; 
         errorTextCredit.textContent = ''; 
+        return true; 
     } else if(creditValue.length === 0) {
         creditCardNumber.style.borderColor = 'firebrick'; 
         errorTextCredit.textContent = 'Please enter a credit card number';    
+        return false; 
     } else if(creditValue.length < 13 || creditValue.length > 16) {
         creditCardNumber.style.borderColor = 'firebrick'; 
         errorTextCredit.textContent = 'Please enter a number that is between 13 and 16 digits long';
+        return false; 
     } 
 }
 
@@ -241,7 +251,13 @@ const zipCode = document.querySelector('#zip');
 
 const zipCodeValidation = () => {
     const regex = /^[0-9]{5}$/; 
-    regex.test(zipCode.value) ? zipCode.style.borderColor = 'rgb(111, 157, 220)' : zipCode.style.borderColor = 'firebrick';
+    if(regex.test(zipCode.value)) {
+        zipCode.style.borderColor = 'rgb(111, 157, 220)'; 
+        return true; 
+    } else {
+        zipCode.style.borderColor = 'firebrick';
+        return false; 
+    }
 }
 
 zipCode.addEventListener('keyup', e => {
@@ -253,7 +269,13 @@ const cvv = document.querySelector('#cvv');
 
 const cvvValidation = () => {
     const regex = /^[0-9]{3}$/;
-    regex.test(cvv.value) ? cvv.style.borderColor = 'rgb(111, 157, 220)' : cvv.style.borderColor = 'firebrick';
+    if (regex.test(cvv.value)) {
+        cvv.style.borderColor = 'rgb(111, 157, 220)';
+        return true; 
+    } else {
+        cvv.style.borderColor = 'firebrick';
+        return false; 
+    }
 }
 
 cvv.addEventListener('keyup', e => {
@@ -262,15 +284,25 @@ cvv.addEventListener('keyup', e => {
 
 // Event Listener for Submit Button
 form.addEventListener('submit', e => {
-
-    nameValidation();
-    emailValidation();
-    checkboxValidation();
-
-    creditValidation();
-    zipCodeValidation();
-    cvvValidation();
-
-    e.preventDefault();
-
+    if(!nameValidation()) {
+        e.preventDefault();
+    }
+    if(!emailValidation()) {
+        e.preventDefault();
+    }
+    if(!checkboxValidation()) {
+        e.preventDefault();
+    }
+    if(!creditValidation()) {
+        e.preventDefault();
+    }
+    if(!zipCodeValidation()) {
+        e.preventDefault();
+    }
+    if(!cvvValidation()) {
+        e.preventDefault();
+    }
+    if(nameValidation() && emailValidation() && checkboxValidation() && creditValidation() && zipCodeValidation() && cvvValidation()) {
+        window.location.reload();
+    }
 });
