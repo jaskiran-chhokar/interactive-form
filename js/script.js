@@ -9,7 +9,6 @@ const otherJobRole = () => {
     const jobRole = document.querySelector('select[id=title]');
     const otherJob = document.querySelector('#other-title');
 
-    //Set Other Job Input to Display None by Default
     otherJob.style.display = 'none';
 
     jobRole.addEventListener('change', e => {
@@ -23,10 +22,9 @@ otherJobRole();
 const design = document.querySelector('#design');
 const colorOptions = document.querySelectorAll('#color > option');
 const defaultColorOption = document.createElement('option');   
-
-//Set Option to be Hidden
 const selectOption = document.querySelector('.select-theme'); 
 
+//Set Option to be Hidden
 const notClickable = option => {
     option.hidden = 'true';
 }
@@ -204,7 +202,7 @@ errorMessage(email,errorTextEmail);
 const checkboxValidation = () => {
 
     const activitiesLegend = document.querySelector('.activities legend');
-    let checked = document.querySelectorAll('input[type=checkbox]:checked').length;
+    const checked = document.querySelectorAll('input[type=checkbox]:checked').length;
 
     if(checked > 0) {
         activitiesLegend.textContent = 'Register for Activities';
@@ -301,7 +299,6 @@ form.addEventListener('submit', e => {
     if(!cvvValidation()) {
         e.preventDefault();
     }
-
     if(nameValidation() && emailValidation() && checkboxValidation() && creditValidation() && zipCodeValidation() && cvvValidation()) {
         setTimeout(function(){window.location.reload();},10);
     }
