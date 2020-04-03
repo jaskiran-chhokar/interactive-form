@@ -42,6 +42,10 @@ const setDefaultColor = () => {
     color.prepend(defaultColorOption); 
 }
 
+//Set Color Options and Label to Display None by Default
+const colorContainer = document.querySelector('#colors-js-puns');
+colorContainer.style.display = 'none';
+
 //Set Condition to Switch Color Option Based on Theme
 const switchTheme = (designValue, designContent, colorOption, index) => {
     if(design.value === designValue) {
@@ -62,6 +66,7 @@ setDefaultColor();
 design.addEventListener('change', e => {
 
     defaultColorOption.remove();
+    colorContainer.style.display = 'block';
 
     for(let i = 0; i < colorOptions.length; i++) {
         let colorOption = colorOptions[i];
