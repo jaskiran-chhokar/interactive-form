@@ -17,7 +17,7 @@ button {
 body {
   font: 1em/1.5;
   color: rgb(46,59,58);
-  background: rgb(235,220,229);
+  background: linear-gradient(to top, rgb(235,220,229) 0%, rgba(235,220,229,0.9) 100%), url(https://images.pexels.com/photos/942419/pexels-photo-942419.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 
 header {
@@ -167,8 +167,13 @@ select, option {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px;
-	background: rgba(255, 255, 255, 0.1);
 	border-radius: 4px;
+}
+
+.paypal,
+.bitcoin {
+	background: rgb(235,220,229);
+	padding: 0.6rem 1.5rem;
 }
 
 /* ================================= 
