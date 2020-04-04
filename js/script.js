@@ -165,7 +165,7 @@ const nameValidation = () => {
     const nameValue = name.value; 
 
     if(nameValue.length > 0) {
-        name.style.borderColor = 'rgb(111, 157, 220)'; 
+        name.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextName.textContent = '';
         return true; 
     } else {
@@ -188,7 +188,7 @@ const emailValidation = () => {
     const emailDot = emailValue.lastIndexOf('.'); 
 
     if(emailSymbol > 1 && emailDot > emailSymbol + 1) {
-        email.style.borderColor = 'rgb(111, 157, 220)'; 
+        email.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextEmail.textContent = '';
         return true; 
     } else {
@@ -229,7 +229,7 @@ const creditValidation = () => {
     const creditValue = creditCardNumber.value;
 
     if(regex.test(creditValue)) {
-        creditCardNumber.style.borderColor = 'rgb(111, 157, 220)'; 
+        creditCardNumber.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextCredit.textContent = ''; 
         return true; 
     } else if(creditValue.length === 0) {
@@ -255,7 +255,7 @@ const zipCode = document.querySelector('#zip');
 const zipCodeValidation = () => {
     const regex = /^[0-9]{5}$/; 
     if(regex.test(zipCode.value)) {
-        zipCode.style.borderColor = 'rgb(111, 157, 220)'; 
+        zipCode.style.borderColor = 'rgba(222,173,193,0.8)'; 
         return true; 
     } else {
         zipCode.style.borderColor = 'firebrick';
@@ -273,7 +273,7 @@ const cvv = document.querySelector('#cvv');
 const cvvValidation = () => {
     const regex = /^[0-9]{3}$/;
     if (regex.test(cvv.value)) {
-        cvv.style.borderColor = 'rgb(111, 157, 220)';
+        cvv.style.borderColor = 'rgba(222,173,193,0.8)';
         return true; 
     } else {
         cvv.style.borderColor = 'firebrick';

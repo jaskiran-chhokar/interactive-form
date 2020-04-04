@@ -34,6 +34,11 @@ a {
   text-decoration: none;
 }
 
+p {
+	color: firebrick; 
+	margin-bottom: 0.3rem; 
+}
+
 /* ================================= 
   Form Element Styles
 ==================================== */
@@ -174,6 +179,12 @@ select, option {
 .bitcoin {
 	background: rgb(235,220,229);
 	padding: 0.6rem 1.5rem;
+}
+
+.paypal p,
+.bitcoin p {
+	color: rgb(46,59,58);
+	margin: 1rem 0;
 }
 
 /* ================================= 
