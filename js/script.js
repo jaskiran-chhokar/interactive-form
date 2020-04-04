@@ -97,7 +97,13 @@ activities.addEventListener('change', e => {
         const clickedDayAndTime = clicked.getAttribute('data-day-and-time');
 
         if(clickedDayAndTime === checkDayAndTime && clicked != checkboxInput) {
-            clicked.checked ? checkboxInput.disabled = 'true' : checkboxInput.removeAttribute('disabled');
+            if(clicked.checked) {
+                checkboxInput.disabled = 'true';
+                checkboxInput.parentElement.style.color = '#d1d2e3';
+            } else {
+                checkboxInput.removeAttribute('disabled');
+                checkboxInput.parentElement.style.color = '#000';
+            }
         } 
     }
     calculateTotalCost(clicked);
