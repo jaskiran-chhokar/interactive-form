@@ -136,11 +136,13 @@ document.querySelector('#payment').addEventListener('change', e => {
     } else if(paymentOption.value === 'paypal') {
         paypal.style.display = 'block';
         creditCard.style.display = 'none';
-        bitcoin.style.display = 'none';         
+        bitcoin.style.display = 'none';    
+        errorTextCredit.textContent = '';       
     } else if(paymentOption.value === 'bitcoin') {
         bitcoin.style.display = 'block';
         creditCard.style.display = 'none';
         paypal.style.display = 'none';
+        errorTextCredit.textContent = '';  
     } 
 });
 
