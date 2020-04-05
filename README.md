@@ -2,6 +2,8 @@
 
 Used JavaScript to add interactivity and enhance usability for a basic web form. The JavaScript makes sure to confirm that each field contains the correct information and displays an error indication, when it does not. 
 
+**Live Version:** https://jaskiran-chhokar.github.io/interactive-form/
+
 
 
 ## Project Requirements 
