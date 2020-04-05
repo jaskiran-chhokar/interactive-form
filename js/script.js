@@ -133,16 +133,19 @@ document.querySelector('#payment').addEventListener('change', e => {
         creditCard.style.display = 'block';
         paypal.style.display = 'none';
         bitcoin.style.display = 'none'; 
+        paymentOptionCredit.setAttribute('selected','selected');
     } else if(paymentOption.value === 'paypal') {
         paypal.style.display = 'block';
         creditCard.style.display = 'none';
         bitcoin.style.display = 'none';    
-        errorTextCredit.textContent = '';       
+        paymentOptionCredit.removeAttribute('selected');
+        errorTextCredit.textContent = ''; 
     } else if(paymentOption.value === 'bitcoin') {
         bitcoin.style.display = 'block';
         creditCard.style.display = 'none';
         paypal.style.display = 'none';
-        errorTextCredit.textContent = '';  
+        paymentOptionCredit.removeAttribute('selected');
+        errorTextCredit.textContent = ''; 
     } 
 });
 
@@ -230,20 +233,26 @@ const creditValidation = () => {
     const regex = /^[0-9]{13,16}$/;
     const creditValue = creditCardNumber.value;
 
-    if(regex.test(creditValue)) {
+    if(paymentOptionCredit.getAttribute('selected') === 'selected') {
+        if(regex.test(creditValue)) {
+            creditCardNumber.style.borderColor = 'rgba(222,173,193,0.8)'; 
+            errorTextCredit.textContent = ''; 
+            return true; 
+        } else if(creditValue.length === 0) {
+            creditCardNumber.style.borderColor = 'firebrick'; 
+            errorTextCredit.textContent = 'Please enter a credit card number';    
+            return false; 
+        } else if(creditValue.length < 13 || creditValue.length > 16) {
+            creditCardNumber.style.borderColor = 'firebrick'; 
+            errorTextCredit.textContent = 'Please enter a number that is between 13 and 16 digits long';
+            return false; 
+        }
+    } else {
         creditCardNumber.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextCredit.textContent = ''; 
         return true; 
-    } else if(creditValue.length === 0) {
-        creditCardNumber.style.borderColor = 'firebrick'; 
-        errorTextCredit.textContent = 'Please enter a credit card number';    
-        return false; 
-    } else if(creditValue.length < 13 || creditValue.length > 16) {
-        creditCardNumber.style.borderColor = 'firebrick'; 
-        errorTextCredit.textContent = 'Please enter a number that is between 13 and 16 digits long';
-        return false; 
-    } 
-}
+    }
+} 
 
 creditCardNumber.addEventListener('keyup', e => {
     creditValidation();
@@ -256,12 +265,18 @@ const zipCode = document.querySelector('#zip');
 
 const zipCodeValidation = () => {
     const regex = /^[0-9]{5}$/; 
-    if(regex.test(zipCode.value)) {
-        zipCode.style.borderColor = 'rgba(222,173,193,0.8)'; 
-        return true; 
+
+    if(paymentOptionCredit.getAttribute('selected') === 'selected') { 
+        if(regex.test(zipCode.value)) {
+            zipCode.style.borderColor = 'rgba(222,173,193,0.8)'; 
+            return true; 
+        } else {
+            zipCode.style.borderColor = 'firebrick';
+            return false; 
+        }
     } else {
-        zipCode.style.borderColor = 'firebrick';
-        return false; 
+        zipCode.style.borderColor = 'rgba(222,173,193,0.8)'; 
+        return true;         
     }
 }
 
@@ -274,13 +289,19 @@ const cvv = document.querySelector('#cvv');
 
 const cvvValidation = () => {
     const regex = /^[0-9]{3}$/;
-    if (regex.test(cvv.value)) {
-        cvv.style.borderColor = 'rgba(222,173,193,0.8)';
-        return true; 
+    if(paymentOptionCredit.getAttribute('selected') === 'selected') {
+        if (regex.test(cvv.value)) {
+            cvv.style.borderColor = 'rgba(222,173,193,0.8)';
+            return true; 
+        } else {
+            cvv.style.borderColor = 'firebrick';
+            return false; 
+        }   
     } else {
-        cvv.style.borderColor = 'firebrick';
-        return false; 
+        cvv.style.borderColor = 'rgba(222,173,193,0.8)'; 
+        return true;          
     }
+
 }
 
 cvv.addEventListener('keyup', e => {
