@@ -1,9 +1,6 @@
 /* ================================= 
   Base Element Styles
 ==================================== */
-
-@import url('https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono');
-
 * {
   box-sizing: border-box;
 }
@@ -129,7 +126,7 @@ button:hover {
 input, 
 select, 
 option {
-	font-family: 'roboto', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 select, option {
