@@ -209,6 +209,9 @@ select, option {
 	button {
 		width: 100%;
 	}
+	select, option {
+		padding: 1rem; 
+	}
 }
 
 @media (min-width: 680px) {
