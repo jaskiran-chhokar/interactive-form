@@ -167,9 +167,10 @@ const errorMessage = (inputType, errorText) => {
 
 //Name Validation
 const nameValidation = () => {
+    let regex = /[a-zA-Z]+\S/; 
     const nameValue = name.value; 
 
-    if(nameValue.length > 0) {
+    if(regex.test(nameValue)) {
         name.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextName.textContent = '';
         return true; 
@@ -188,7 +189,7 @@ errorMessage(name, errorTextName);
 
 // Email Validation 
 const emailValidation = () => {
-    let regex = /\w+@\w+\.\w+/;
+    let regex = /^\w+@\w+\.\w+/;
     const emailValue = email.value; 
 
     if(regex.test(emailValue)) {
