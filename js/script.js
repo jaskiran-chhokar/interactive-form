@@ -188,11 +188,10 @@ errorMessage(name, errorTextName);
 
 // Email Validation 
 const emailValidation = () => {
+    let regex = /\w+@\w+\.\w+/;
     const emailValue = email.value; 
-    const emailSymbol = emailValue.indexOf('@'); 
-    const emailDot = emailValue.lastIndexOf('.'); 
 
-    if(emailSymbol > 1 && emailDot > emailSymbol + 1) {
+    if(regex.test(emailValue)) {
         email.style.borderColor = 'rgba(222,173,193,0.8)'; 
         errorTextEmail.textContent = '';
         return true; 
