@@ -189,7 +189,7 @@ errorMessage(name, errorTextName);
 
 // Email Validation 
 const emailValidation = () => {
-    let regex = /^\w+@\w+\.\w+/;
+    let regex = /^[^@]+@[^@.]+\.[a-z]+$/i;
     const emailValue = email.value; 
 
     if(regex.test(emailValue)) {
@@ -230,7 +230,7 @@ const checkboxValidation = () => {
 const creditCardNumber = document.querySelector('#cc-num');
 
 const creditValidation = () => {
-    const regex = /^[0-9]{13,16}$/;
+    const regex = /^\d{13,16}$/;
     const creditValue = creditCardNumber.value;
 
     if(paymentOptionCredit.getAttribute('selected') === 'selected') {
@@ -246,11 +246,11 @@ const creditValidation = () => {
             creditCardNumber.style.borderColor = 'firebrick'; 
             errorTextCredit.textContent = 'Please enter a number that is between 13 and 16 digits long';
             return false; 
+        } else {
+            creditCardNumber.style.borderColor = 'firebrick'; 
+            errorTextCredit.textContent = 'Please enter a credit card number'; 
+            return false; 
         }
-    } else {
-        creditCardNumber.style.borderColor = 'rgba(222,173,193,0.8)'; 
-        errorTextCredit.textContent = ''; 
-        return true; 
     }
 } 
 
