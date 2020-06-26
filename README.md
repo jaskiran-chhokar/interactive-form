@@ -26,7 +26,7 @@ When a user unchecks an activity, make sure that competing activities (if there 
 
 As a user selects activities, a running total should display below the list of checkboxes. For example, if the user selects "Main Conference", then Total: $200 should appear. If they add 1 workshop, the total should change to Total: $300.
 
-### :credit_card: Payment Info Section 
+#### :credit_card: Payment Info Section 
 Display payment sections based on the payment option chosen in the select menu.
 
 
@@ -34,12 +34,18 @@ Display payment sections based on the payment option chosen in the select menu.
 ## Form Validation Requirements 
 If any of the following validation errors exist, prevent the user from submitting the form:
 
-- Name field can't be blank.
-- Email field must be a validly formatted e-mail address (you don't have to check that it's a real e-mail address, just that it's formatted like one).
-- User must select at least one checkbox under the "Register for Activities" section of the form.
-- If the selected payment option is "Credit Card," make sure the user has supplied a Credit Card number, a Zip Code, and a 3 number CVV value before the form can be submitted.
-- Credit Card field should only accept a number between 13 and 16 digits.
-- The Zip Code field should accept a 5-digit number.
-- The CVV should only accept a number that is exactly 3 digits long.
+:heavy_check_mark: Name field cannot be blank.
+
+:heavy_check_mark: Email field must be a validly formatted e-mail address (not required to check if it's a real e-mail address, just that it's formatted like one).
+
+:heavy_check_mark: User must select at least one checkbox under the "Register for Activities" section of the form.
+
+:heavy_check_mark: If the selected payment option is "Credit Card," make sure the user has supplied a Credit Card number, a Zip Code, and a 3 number CVV value before the form can be submitted.
+
+:heavy_check_mark: Credit Card field should only accept a number between 13 and 16 digits.
+
+:heavy_check_mark: The Zip Code field should accept a 5-digit number.
+
+:heavy_check_mark: The CVV should only accept a number that is exactly 3 digits long.
 
 
