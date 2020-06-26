@@ -49,8 +49,17 @@ If any of the following validation errors exist, prevent the user from submittin
 :heavy_check_mark: The CVV should only accept a number that is exactly 3 digits long.
 
 ## Built With 
-  - HTML5 
-  - CSS3 
-  - JavaScript
+:heavy_check_mark: HTML5 
 
+:heavy_check_mark: CSS3 
+
+:heavy_check_mark: JavaScript (ES6)
+
+:heavy_check_mark: Regex
+
+## Acknowledgments 
+
+[Normalize CSS](https://necolas.github.io/normalize.css/)
+
+[Google Fonts](https://fonts.google.com/)
 
